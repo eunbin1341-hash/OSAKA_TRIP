@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇯🇵 오사카 여행 2026</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --red: #C8102E;
+    --ink: #1a1a1a;
+    --paper: #F7F3EE;
+    --warm: #E8E0D5;
+    --gold: #B8860B;
+    --muted: #8a8279;
+    --day1: #2D5016;
+    --day2: #1a3a5c;
+    --day3: #6B3A2A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 4rem 2rem 3rem;
+    border-bottom: 1px solid #d4c9bc;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '大阪';
+    position: absolute;
+    right: -0.05em;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: clamp(8rem, 22vw, 18rem);
+    color: rgba(200,16,46,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    font-weight: 700;
+  }
+  .hero-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 7vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .meta-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .meta-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  /* ── FLIGHT STRIP ── */
+  .flight-strip {
+    background: var(--ink);
+    color: white;
+    padding: 0;
+  }
+  .flight-strip-inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .flight-card {
+    flex: 1;
+    min-width: 260px;
+    padding: 1.25rem 2rem;
+    border-right: 1px solid #333;
+  }
+  .flight-card:last-child { border-right: none; }
+  .flight-airline {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .flight-airline span {
+    color: white;
+    font-weight: 600;
+  }
+  .flight-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.35rem;
+  }
+  .flight-time { font-size: 1.3rem; font-weight: 700; min-width: 52px; }
+  .flight-airport-info {}
+  .flight-airport-code { font-size: 0.85rem; font-weight: 600; }
+  .flight-airport-name { font-size: 0.7rem; color: #aaa; }
+  .flight-mid {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.15rem 0 0.15rem 52px;
+    font-size: 0.7rem;
+    color: #777;
+  }
+  .flight-mid-line { flex: 1; max-width: 60px; height: 1px; background: #444; }
+  .flight-badge {
+    font-size: 0.62rem;
+    padding: 2px 6px;
+    border: 1px solid #555;
+    border-radius: 2px;
+    color: #aaa;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .flight-badge.warn { border-color: #b8860b88; color: #d4a017; }
+
+  /* ── DAYS ── */
+  .days {
+    padding: 2.5rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .day-card {
+    border: 1px solid #d4c9bc;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #d4c9bc;
+  }
+  .day-header.d1 { background: var(--day1); color: white; }
+  .day-header.d2 { background: var(--day2); color: white; }
+  .day-header.d3 { background: var(--day3); color: white; }
+
+  .day-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.9;
+    letter-spacing: -0.03em;
+  }
+  .day-info { flex: 1; }
+  .day-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    opacity: 0.75;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .day-title { font-size: 1rem; font-weight: 600; margin-top: 0.1rem; }
+  .day-route { font-size: 0.72rem; opacity: 0.7; margin-top: 0.15rem; font-weight: 400; }
+
+  .timeline { padding: 0; }
+
+  .slot {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #ebe4da;
+    transition: background 0.15s;
+  }
+  .slot:last-child { border-bottom: none; }
+  .slot:hover { background: #f0ebe4; }
+
+  .slot-time {
+    min-width: 70px;
+    padding: 1rem 0.75rem 1rem 1.5rem;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    padding-top: 1.1rem;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .slot-dot-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.25rem;
+    flex-shrink: 0;
+    width: 20px;
+  }
+  .slot-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #c8bfb4;
+    flex-shrink: 0;
+  }
+  .slot-dot.accent { background: var(--red); }
+  .slot-line {
+    flex: 1;
+    width: 1px;
+    background: #ddd7cf;
+    margin-top: 4px;
+  }
+
+  .slot-body {
+    flex: 1;
+    padding: 0.9rem 1.5rem 0.9rem 0.75rem;
+  }
+  .slot-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .slot-title a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .slot-title a:hover { border-bottom-color: var(--ink); }
+  .slot-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .slot-tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 1px;
+    margin-top: 0.3rem;
+    border: 1px solid;
+    font-weight: 600;
+  }
+  .tag-food { color: #7a3b1e; border-color: #c8906a; background: #fdf0e8; }
+  .tag-shop { color: #1a3a5c; border-color: #6a9abf; background: #e8f0f8; }
+  .tag-spot { color: #2D5016; border-color: #7aad4f; background: #edf5e5; }
+
+  /* ── TIPS ── */
+  .tips-section {
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+    padding: 0 1.5rem;
+  }
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #d4c9bc;
+    letter-spacing: -0.01em;
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: #d4c9bc;
+    border: 1px solid #d4c9bc;
+  }
+  .tip-item {
+    background: var(--paper);
+    padding: 1rem 1.25rem;
+  }
+  .tip-item strong {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.35rem;
+    font-weight: 700;
+  }
+  .tip-item p { font-size: 0.8rem; color: #555; line-height: 1.6; font-weight: 400; }
+
+  /* ── CHECKLIST ── */
+  .checklist-section {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    padding: 0 1.5rem;
+  }
+  .checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.83rem;
+    padding: 0.5rem 0;
+    font-weight: 400;
+  }
+  .check-item input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--red);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .check-item label { cursor: pointer; }
+  .check-item.done label { text-decoration: line-through; color: var(--muted); }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid #d4c9bc;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  }
+
+  @media (max-width: 520px) {
+    .hero { padding: 3rem 1.25rem 2rem; }
+    .days { padding: 1.5rem 1rem; }
+    .tips-section, .checklist-section { padding: 0 1rem; }
+    .flight-card { border-right: none; border-bottom: 1px solid #333; }
+    .flight-card:last-child { border-bottom: none; }
+    .slot-time { min-width: 58px; padding-left: 1rem; font-size: 0.65rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">Travel Plan · 2026</p>
+  <h1>오사카<br>2박 3일</h1>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">기간</span>
+      <span class="meta-value">06.11 목 — 06.13 토</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">인원</span>
+      <span class="meta-value">2명</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">숙소</span>
+      <span class="meta-value">APA Hotel Namba-Shinsaibashi</span>
+    </div>
+  </div>
+</section>
+
+<!-- FLIGHT STRIP -->
+<div class="flight-strip">
+  <div class="flight-strip-inner">
+
+    <div class="flight-card">
+      <div class="flight-airline">가는 편 · <span>이스타항공 ZE-611</span></div>
+      <div class="flight-row">
+        <div class="flight-time">09:15</div>
+        <div class="flight-airport-info">
+          <div class="flight-airport-code">ICN · 서울 인천</div>
+          <div class="flight-airport-name">Terminal 1</div>
+        </div>
+      </div>
+      <div class="flight-mid">
+        <div class="flight-mid-line"></div>
+        <span>1h 55m · 직항</span>
+        <div class="flight-mid-line"></div>
+        <span class="flight-badge">기내 10kg</span>
+      </div>
+      <div class="flight-row">
+        <div class="flight-time">11:10</div>
+        <div class="flight-airport-info">
+          <div class="flight-airport-code">KIX · 오사카 간사이</div>
+          <div class="flight-airport-name">06.11 목요일 도착</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-airline">오는 편 · <span>피치항공 MM-709</span></div>
+      <div class="flight-row">
+        <div class="flight-time">18:15</div>
+        <div class="flight-airport-info">
+          <div class="flight-airport-code">KIX · 오사카 간사이</div>
+          <div class="flight-airport-name">06.13 토요일 출발</div>
+        </div>
+      </div>
+      <div class="flight-mid">
+        <div class="flight-mid-line"></div>
+        <span>1h 55m · 직항</span>
+        <div class="flight-mid-line"></div>
+        <span class="flight-badge warn">기내 7kg ⚠</span>
+      </div>
+      <div class="flight-row">
+        <div class="flight-time">20:10</div>
+        <div class="flight-airport-info">
+          <div class="flight-airport-code">ICN · 서울 인천</div>
+          <div class="flight-airport-name">체크인 최소 90분 전</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DAYS -->
+<div class="days">
+
+  <!-- DAY 1 -->
+  <div class="day-card">
+    <div class="day-header d1">
+      <div class="day-num">01</div>
+      <div class="day-info">
+        <div class="day-date">Thursday · June 11</div>
+        <div class="day-title">난바 도착 & 도톤보리 먹방</div>
+        <div class="day-route">간사이공항 → 난바 → 도톤보리</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="slot">
+        <div class="slot-time">07:00</div>
+        <div class="slot-dot-col"><div class="slot-dot accent"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🤝 인천공항 T1 집합</div>
+          <div class="slot-desc">제1터미널 만남. 탑승 수속 & 수화물 무게 최종 확인. 출발 2시간 전 체크인 권장.</div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">09:15</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">✈️ ICN 출발 · 이스타항공 ZE-611</div>
+          <div class="slot-desc">인천 → 오사카 간사이. 직항 1시간 55분.</div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">11:10</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🛬 KIX 도착 · 라피트 탑승</div>
+          <div class="slot-desc">간사이공항 도착 후 라피트 특급으로 난바까지 약 40분. 12:00~12:30 난바 도착 예정.</div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">12:30</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🏨 <a href="https://maps.app.goo.gl/Z2keJqmf7fZGWWz38" target="_blank">APA Hotel Namba-Shinsaibashi</a> 체크인</div>
+          <div class="slot-desc">체크인 전이면 짐만 맡기고 바로 출발.</div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">오후</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🦀 <a href="https://kuromon.com/jp/" target="_blank">쿠로문 시장 (黒門市場)</a></div>
+          <div class="slot-desc">신선한 해산물·타코야키·와규 꼬치 투어. 오사카의 부엌.</div>
+          <span class="slot-tag tag-food">먹방</span>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">저녁</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🌉 도톤보리 강변 & 글리코상</div>
+          <div class="slot-desc">에비스바시 위에서 글리코 사인 야경 포토. 오사카 필수 포토스팟.</div>
+          <span class="slot-tag tag-spot">포토스팟</span>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">저녁</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🔥 <a href="https://maps.google.com/?cid=10180483055054994234" target="_blank">야키니쿠 리키마루 난바 도톤보리점</a></div>
+          <div class="slot-desc">★4.7 · 도톤보리 한복판 와규 야키니쿠. 태블릿 주문 시스템.</div>
+          <span class="slot-tag tag-food">먹방</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card">
+    <div class="day-header d2">
+      <div class="day-num">02</div>
+      <div class="day-info">
+        <div class="day-date">Friday · June 12</div>
+        <div class="day-title">신사 + 아메무라 + 드럭스토어 쇼핑</div>
+        <div class="day-route">스미요시타이샤 → 난바 → 신사이바시 → 아메무라</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="slot">
+        <div class="slot-time">오전</div>
+        <div class="slot-dot-col"><div class="slot-dot accent"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">⛩️ <a href="http://www.sumiyoshitaisha.net/" target="_blank">스미요시타이샤 (住吉大社)</a></div>
+          <div class="slot-desc">오사카 최고령 신사. 아치형 타이코바시 다리가 포토스팟. 난카이 전철 15분. 영업 06:00~17:00.</div>
+          <span class="slot-tag tag-spot">신사</span>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">점심</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🥩 <a href="https://www.gyukatsu-motomura.com/store/Dotonbori" target="_blank">규카츠 모토무라 도톤보리점</a></div>
+          <div class="slot-desc">★4.9 · 철판에 직접 구워먹는 규카츠, 라이스 무제한. 14시 이후 방문 권장.</div>
+          <span class="slot-tag tag-food">먹방</span>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">오후</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">👗 아메리카무라 (아메무라)</div>
+          <div class="slot-desc">빈티지·스트릿 패션, 독립 편집샵 밀집. 젊은 감성의 오사카 패션 허브.</div>
+          <span class="slot-tag tag-shop">패션 쇼핑</span>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">오후</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">💊 신사이바시스지 드럭스토어 순례</div>
+          <div class="slot-desc">
+            <a href="https://www.sugi-net.jp/stores/001478" target="_blank">스기 드럭</a> (★4.8) · 
+            <a href="https://maps.google.com/?cid=16752148446150365284" target="_blank">코쿠민 신사이바시점</a> (★4.8) · 다이코쿠 드럭. ¥15,000 이상 구매 시 면세.
+          </div>
+          <span class="slot-tag tag-shop">쇼핑</span>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">저녁</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🐟 <a href="https://kurofune-unagi.com/" target="_blank">DOTONBORI KUROFUNE 히츠마부시</a></div>
+          <div class="slot-desc">★4.9 · 아메무라점. 세 가지 방식으로 즐기는 장어덮밥, 오차즈케로 마무리.</div>
+          <span class="slot-tag tag-food">먹방</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card">
+    <div class="day-header d3">
+      <div class="day-num">03</div>
+      <div class="day-info">
+        <div class="day-date">Saturday · June 13</div>
+        <div class="day-title">덴덴타운 + 쿠로문 + 귀국</div>
+        <div class="day-route">덴덴타운 → 쿠로문 → KIX 18:15</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="slot">
+        <div class="slot-time">오전</div>
+        <div class="slot-dot-col"><div class="slot-dot accent"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🎮 <a href="https://www.nippombashi.jp/" target="_blank">덴덴타운 (日本橋)</a></div>
+          <div class="slot-desc">애니·피규어·레트로 게임 전문 거리. 숙소에서 도보 10분. 오전이라 한산.</div>
+          <span class="slot-tag tag-shop">쇼핑</span>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">점심</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🦑 <a href="https://kuromon.com/jp/" target="_blank">쿠로문 시장 마지막 식사</a></div>
+          <div class="slot-desc">참치·성게·굴 등 신선 해산물. 오전 방문 시 현지인 비중 높음.</div>
+          <span class="slot-tag tag-food">먹방</span>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">오후</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🛍️ 마지막 쇼핑</div>
+          <div class="slot-desc">드럭스토어 재방문 or 돈키호테. 못 산 것들 마저 구매.</div>
+          <span class="slot-tag tag-shop">쇼핑</span>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">16:30</div>
+        <div class="slot-dot-col"><div class="slot-dot"></div><div class="slot-line"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">🚌 공항버스 출발 (5500번)</div>
+          <div class="slot-desc">난바 → 인천공항 리무진. 18:15 탑승 위해 16:30 이전 출발 필수.</div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">18:15</div>
+        <div class="slot-dot-col"><div class="slot-dot accent"></div></div>
+        <div class="slot-body">
+          <div class="slot-title">✈️ KIX 출발 · 귀국 (피치항공 MM-709)</div>
+          <div class="slot-desc">KIX 18:15 → ICN 20:10. 직항 1h 55m. 체크인 최소 90분 전 (16:45 이전).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TIPS -->
+<section class="tips-section">
+  <h2 class="section-title">꿀팁 모음</h2>
+  <div class="tips-grid">
+    <div class="tip-item">
+      <strong>공항 교통</strong>
+      <p>KIX → 난바는 라피트 특급 권장. 약 40분, ¥1,430. 사전 예매 가능.</p>
+    </div>
+    <div class="tip-item">
+      <strong>수화물 주의</strong>
+      <p>이스타 기내 10kg / 피치 기내 7kg. 귀국편 쇼핑 후 초과 주의. 미리 무게 재기!</p>
+    </div>
+    <div class="tip-item">
+      <strong>드럭스토어 면세</strong>
+      <p>한 매장 ¥15,000 이상 구매 시 면세. 여권 지참 필수.</p>
+    </div>
+    <div class="tip-item">
+      <strong>규카츠 오픈런</strong>
+      <p>11시 오픈 직후 or 14시 이후 방문 권장. 12~14시는 대기 1시간 이상.</p>
+    </div>
+    <div class="tip-item">
+      <strong>결제 팁</strong>
+      <p>현금 선호 가게 많음. ICOCA 카드 충전해두면 교통 편리.</p>
+    </div>
+    <div class="tip-item">
+      <strong>귀국 시간</strong>
+      <p>피치 체크인 최소 90분 전. 16:30 이전 공항버스 탑승 필수.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="checklist-section">
+  <h2 class="section-title">출발 전 체크리스트</h2>
+  <div class="checklist">
+    <div class="check-item done">
+      <input type="checkbox" id="c1" checked onchange="toggleDone(this)">
+      <label for="c1">항공권 예매</label>
+    </div>
+    <div class="check-item done">
+      <input type="checkbox" id="c2" checked onchange="toggleDone(this)">
+      <label for="c2">숙소 예약</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c3" onchange="toggleDone(this)">
+      <label for="c3">라피트 사전 예매</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c4" onchange="toggleDone(this)">
+      <label for="c4">공항버스 예매 (5500번)</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c5" onchange="toggleDone(this)">
+      <label for="c5">eSIM / 포켓와이파이</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c6" onchange="toggleDone(this)">
+      <label for="c6">환전 / 카드 수수료 확인</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c7" onchange="toggleDone(this)">
+      <label for="c7">여행자보험</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c8" onchange="toggleDone(this)">
+      <label for="c8">ICOCA 카드 준비</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c9" onchange="toggleDone(this)">
+      <label for="c9">수화물 무게 확인 (피치 7kg)</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c10" onchange="toggleDone(this)">
+      <label for="c10"><a href="https://services.digital.go.jp/ko/visit-japan-web/" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">비짓재팬</a> 등록</label>
+    </div>
+  </div>
+</section>
+
+<footer>
+  🇯🇵 OSAKA 2026 &nbsp;·&nbsp; 06.11 — 06.13 &nbsp;·&nbsp; 이스타항공 ZE-611 / 피치항공 MM-709
+</footer>
+
+<script>
+function toggleDone(el) {
+  el.closest('.check-item').classList.toggle('done', el.checked);
+}
+</script>
+</body>
+</html>
