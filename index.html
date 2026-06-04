@@ -338,6 +338,75 @@
   .check-item label { cursor: pointer; }
   .check-item.done label { text-decoration: line-through; color: var(--muted); }
 
+  /* ── BUDGET ── */
+  .budget-section {
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+    padding: 0 1.5rem;
+  }
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    border: 1px solid #d4c9bc;
+  }
+  .budget-table th {
+    background: var(--ink);
+    color: white;
+    padding: 0.6rem 1rem;
+    text-align: left;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .budget-table td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid #ebe4da;
+    vertical-align: middle;
+  }
+  .budget-table tr:last-child td { border-bottom: none; }
+  .budget-table tr:hover td { background: #f0ebe4; }
+  .budget-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .budget-table .paid {
+    font-size: 0.68rem;
+    padding: 2px 7px;
+    border-radius: 1px;
+    border: 1px solid #7aad4f;
+    color: #2D5016;
+    background: #edf5e5;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .budget-table .cat { color: var(--muted); font-size: 0.75rem; font-weight: 500; }
+  .budget-total {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid #d4c9bc;
+    background: #f7f3ee;
+    font-size: 0.83rem;
+  }
+  .budget-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .budget-total-row strong {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .budget-total-row span { font-variant-numeric: tabular-nums; }
+  .budget-note {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    background: var(--warm);
+    padding: 0.65rem 1rem;
+    border-left: 3px solid #d4c9bc;
+  }
+
   footer {
     text-align: center;
     padding: 1.5rem;
@@ -661,6 +730,116 @@
       <p>피치 체크인 최소 90분 전. 16:30 이전 공항버스 탑승 필수.</p>
     </div>
   </div>
+</section>
+
+<!-- BUDGET -->
+<section class="budget-section">
+  <h2 class="section-title">예산 정리</h2>
+  <table class="budget-table">
+    <thead>
+      <tr>
+        <th>카테고리</th>
+        <th>상세</th>
+        <th class="num">단가 (원)</th>
+        <th class="num">수량/일수</th>
+        <th class="num">소계 (원)</th>
+        <th>결제/비고</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cat">항공</td>
+        <td>왕복 (이스타 + 피치)</td>
+        <td class="num">247,100</td>
+        <td class="num">2</td>
+        <td class="num">494,200</td>
+        <td><span class="paid">정산 완</span></td>
+      </tr>
+      <tr>
+        <td class="cat">숙박</td>
+        <td>APA Hotel · 2박</td>
+        <td class="num">102,737</td>
+        <td class="num">2</td>
+        <td class="num">205,474</td>
+        <td><span class="paid">정산 완</span></td>
+      </tr>
+      <tr>
+        <td class="cat">교통</td>
+        <td>(한국) 성남 ↔ 공항</td>
+        <td class="num">11,500</td>
+        <td class="num">1</td>
+        <td class="num">11,500</td>
+        <td>은빈 결제 완료</td>
+      </tr>
+      <tr>
+        <td class="cat">교통</td>
+        <td>JR / 지하철 / 버스</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="cat">교통</td>
+        <td>공항 ↔ 시내 (라피트)</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="cat">식비</td>
+        <td>하루 평균</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="cat">관광/티켓</td>
+        <td>USJ / 디즈니 / 전망대 등</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="cat">쇼핑</td>
+        <td>면세 / 드럭스토어</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="cat">통신</td>
+        <td>eSIM / 포켓와이파이</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="cat">기타</td>
+        <td>보험 / 수수료 / 예비비</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="budget-total">
+    <div class="budget-total-row">
+      <span>확정 지출 합계</span>
+      <span><strong>711,174원</strong></span>
+    </div>
+    <div class="budget-total-row">
+      <span>1인당 (확정분)</span>
+      <span><strong>355,587원</strong></span>
+    </div>
+  </div>
+  <div class="budget-note">나머지 항목(교통·식비·쇼핑 등)은 현지 지출 후 업데이트 예정.</div>
 </section>
 
 <!-- CHECKLIST -->
